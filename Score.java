@@ -364,7 +364,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTf.getText())) {
             int currentScore = Integer.parseInt(gameChosen2Label.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTf.getText());
-            if (currentScore > pointsThrown && pointsThrown >= 0 && pointsThrown < 61 && currentScore - pointsThrown != 1) {
+            if (currentScore > pointsThrown && possibleThrows(pointsThrown) && currentScore - pointsThrown != 1) {
                 int updatedScore = currentScore - pointsThrown;
                 String possOuts = listOfOuts(Integer.toString(updatedScore));
                 gameChosen2Label.setText(Integer.toString(updatedScore));
@@ -398,7 +398,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTfP2.getText())) {
             int currentScore = Integer.parseInt(gameChosen2LabelP2.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTfP2.getText());
-            if (currentScore > pointsThrown && pointsThrown >= 0 && pointsThrown < 61 && currentScore - pointsThrown != 1) {
+            if (currentScore > pointsThrown && possibleThrows(pointsThrown) && currentScore - pointsThrown != 1) {
                 int updatedScore = currentScore - pointsThrown;
                 String possOuts = listOfOuts(Integer.toString(updatedScore));
                 gameChosen2LabelP2.setText(Integer.toString(updatedScore));
@@ -444,6 +444,20 @@ public class Score extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+
+    public boolean possibleThrows(int input) {
+        if(input == 25 || input == 50){
+            return true;
+        }
+        for (int i = 0; i <= 20; i++) {
+            for (int j = 1; j <= 3; j++) {
+                if (i * j == input) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void startAgain() {
