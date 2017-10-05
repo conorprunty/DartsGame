@@ -119,40 +119,57 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="currentScoreLabel" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                                      <Component id="player1Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Component id="gameChosenLabel" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="playerOneWinsLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="playerOneWins" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="currentScoreLabel" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                                              <Component id="player1Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="playerOneWinsLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="playerOneWins" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="gameChosen2Label" min="-2" pref="106" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Component id="gameChosen2Label" min="-2" pref="106" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                          <Component id="outsP1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace pref="80" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="currentScoreLabelP2" min="-2" pref="102" max="-2" attributes="0"/>
                                       <Component id="player2Label" min="-2" max="-2" attributes="0"/>
                                       <Component id="enterScoreLabelP2" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="outsP2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="gameChosenLabel" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                          <Component id="enterButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="enterScoreLabel" min="-2" pref="87" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="scoreEntryTf" min="-2" pref="88" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="enterScoreLabel" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="scoreEntryTf" min="-2" pref="88" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="outAmountP1" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Component id="enterButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -164,11 +181,14 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="gameChosen2LabelP2" min="-2" pref="106" max="-2" attributes="0"/>
-                              <Component id="scoreEntryTfP2" min="-2" pref="88" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="playerTwoWinsLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="playerTwoWins" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="outAmountP2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="scoreEntryTfP2" alignment="0" pref="88" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
@@ -210,7 +230,16 @@
                       <Component id="enterButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="enterButtonP2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="120" max="32767" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="outsP1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="outsP2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="outAmountP1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="outAmountP2" min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -299,6 +328,26 @@
         <Component class="javax.swing.JLabel" name="playerTwoWins">
           <Properties>
             <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="outsP1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Best out:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="outsP2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Best out:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="outAmountP1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="None"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="outAmountP2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="None"/>
           </Properties>
         </Component>
       </SubComponents>
