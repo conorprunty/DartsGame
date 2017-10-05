@@ -364,7 +364,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTf.getText())) {
             int currentScore = Integer.parseInt(gameChosen2Label.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTf.getText());
-            if (currentScore > pointsThrown && pointsThrown >= 0) {
+            if (currentScore > pointsThrown && pointsThrown >= 0 && currentScore - pointsThrown != 1) {
                 int updatedScore = currentScore - pointsThrown;
                 String possOuts = listOfOuts(Integer.toString(updatedScore));
                 gameChosen2Label.setText(Integer.toString(updatedScore));
@@ -378,6 +378,8 @@ public class Score extends javax.swing.JFrame {
                 scoreEntryTf.setText("");
                 gameChosen2Label.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
                 gameChosen2LabelP2.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
+                outAmountP1.setText("None");
+                outAmountP2.setText("None");
                 //gameChoiceButton.setText("Go!");
                 //startAgain();
                 count = 1;
@@ -396,7 +398,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTfP2.getText())) {
             int currentScore = Integer.parseInt(gameChosen2LabelP2.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTfP2.getText());
-            if (currentScore > pointsThrown && pointsThrown >= 0) {
+            if (currentScore > pointsThrown && pointsThrown >= 0 && currentScore - pointsThrown != 1) {
                 int updatedScore = currentScore - pointsThrown;
                 String possOuts = listOfOuts(Integer.toString(updatedScore));
                 gameChosen2LabelP2.setText(Integer.toString(updatedScore));
@@ -416,6 +418,8 @@ public class Score extends javax.swing.JFrame {
                 gameChosen2Label.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
                 gameChosen2LabelP2.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
                 count = 1;
+                outAmountP1.setText("None");
+                outAmountP2.setText("None");
                 //gameChoiceButton.setText("Go!");
                 //startAgain();
             } else {
