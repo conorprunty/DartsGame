@@ -15,6 +15,9 @@ import javax.swing.JTextField;
  */
 public class Score extends javax.swing.JFrame {
 
+    private int count = 1;
+    private boolean canSwitch = true;
+
     /**
      * Creates new form Score
      */
@@ -323,6 +326,41 @@ public class Score extends javax.swing.JFrame {
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
         // TODO add your handling code here:
+        if (count < 3) {
+            playerOneTurn();
+        } else if (count == 3) {
+            playerOneTurn();
+            if (canSwitch) {
+                showPlayerTwo();
+                hidePlayerOne();
+                showP2Outs();
+                hideP1Outs();
+                count = 1;
+                scoreEntryTf.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_enterButtonActionPerformed
+
+    private void enterButtonP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonP2ActionPerformed
+        // TODO add your handling code here:
+        if (count < 3) {
+            playerTwoTurn();
+        } else if (count == 3) {
+            playerTwoTurn();
+            if (canSwitch) {
+                showPlayerOne();
+                hidePlayerTwo();
+                showP1Outs();
+                hideP2Outs();
+                count = 1;
+                scoreEntryTfP2.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_enterButtonP2ActionPerformed
+
+    public void playerOneTurn() {
         if (checkIfNumber(scoreEntryTf.getText())) {
             int currentScore = Integer.parseInt(gameChosen2Label.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTf.getText());
@@ -332,10 +370,8 @@ public class Score extends javax.swing.JFrame {
                 gameChosen2Label.setText(Integer.toString(updatedScore));
                 scoreEntryTf.setText("");
                 outAmountP1.setText(possOuts);
-                showPlayerTwo();
-                hidePlayerOne();
-                showP2Outs();
-                hideP1Outs();
+                count++;
+                canSwitch = true;
             } else if (currentScore == pointsThrown) {
                 JOptionPane.showMessageDialog(null, player1Label.getText() + " wins!");
                 playerOneWins.setText(Integer.toString(addOneToWins(playerOneWins.getText())));
@@ -344,19 +380,19 @@ public class Score extends javax.swing.JFrame {
                 gameChosen2LabelP2.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
                 //gameChoiceButton.setText("Go!");
                 //startAgain();
+                count = 1;
             } else {
                 JOptionPane.showMessageDialog(null, "You can't possibly have scored that.");
                 scoreEntryTf.setText("");
+                canSwitch = false;
             }
         } else {
             scoreEntryTf.setText("");
+            canSwitch = false;
         }
+    }
 
-
-    }//GEN-LAST:event_enterButtonActionPerformed
-
-    private void enterButtonP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonP2ActionPerformed
-        // TODO add your handling code here:
+    public void playerTwoTurn() {
         if (checkIfNumber(scoreEntryTfP2.getText())) {
             int currentScore = Integer.parseInt(gameChosen2LabelP2.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTfP2.getText());
@@ -367,29 +403,34 @@ public class Score extends javax.swing.JFrame {
                 scoreEntryTfP2.setText("");
                 outAmountP2.setText(listOfOuts(Integer.toString(currentScore)));
                 outAmountP2.setText(possOuts);
-                showPlayerOne();
-                hidePlayerTwo();
-                showP1Outs();
-                hideP2Outs();
+                count++;
+                canSwitch = true;
             } else if (currentScore == pointsThrown) {
                 JOptionPane.showMessageDialog(null, player2Label.getText() + " wins!");
                 playerTwoWins.setText(Integer.toString(addOneToWins(playerTwoWins.getText())));
                 scoreEntryTfP2.setText("");
                 showPlayerOne();
                 hidePlayerTwo();
+                showP1Outs();
+                hideP2Outs();
                 gameChosen2Label.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
                 gameChosen2LabelP2.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
+                count = 1;
                 //gameChoiceButton.setText("Go!");
                 //startAgain();
             } else {
                 JOptionPane.showMessageDialog(null, "You can't possibly have scored that.");
                 scoreEntryTfP2.setText("");
+                canSwitch = false;
+                //count--;
             }
         } else {
             scoreEntryTfP2.setText("");
+            canSwitch = false;
+            //count--;
         }
 
-    }//GEN-LAST:event_enterButtonP2ActionPerformed
+    }
 
     boolean checkIfNumber(String s) {
         try {
@@ -428,23 +469,23 @@ public class Score extends javax.swing.JFrame {
         scoreEntryTfP2.setVisible(true);
         enterButtonP2.setVisible(true);
     }
-    
-    public void hideP1Outs(){
+
+    public void hideP1Outs() {
         outsP1.setVisible(false);
         outAmountP1.setVisible(false);
     }
-    
-    public void showP1Outs(){
+
+    public void showP1Outs() {
         outsP1.setVisible(true);
         outAmountP1.setVisible(true);
     }
-    
-    public void hideP2Outs(){
+
+    public void hideP2Outs() {
         outsP2.setVisible(false);
         outAmountP2.setVisible(false);
     }
-    
-    public void showP2Outs(){
+
+    public void showP2Outs() {
         outsP2.setVisible(true);
         outAmountP2.setVisible(true);
     }
@@ -453,8 +494,6 @@ public class Score extends javax.swing.JFrame {
         int newAmount = (Integer.parseInt(s) + 1);
         return newAmount;
     }
-    
-    
 
     /**
      * @param args the command line arguments
