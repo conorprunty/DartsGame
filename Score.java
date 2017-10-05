@@ -364,7 +364,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTf.getText())) {
             int currentScore = Integer.parseInt(gameChosen2Label.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTf.getText());
-            if (currentScore > pointsThrown && pointsThrown >= 0 && currentScore - pointsThrown != 1) {
+            if (currentScore > pointsThrown && pointsThrown >= 0 && pointsThrown < 61 && currentScore - pointsThrown != 1) {
                 int updatedScore = currentScore - pointsThrown;
                 String possOuts = listOfOuts(Integer.toString(updatedScore));
                 gameChosen2Label.setText(Integer.toString(updatedScore));
@@ -398,7 +398,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTfP2.getText())) {
             int currentScore = Integer.parseInt(gameChosen2LabelP2.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTfP2.getText());
-            if (currentScore > pointsThrown && pointsThrown >= 0 && currentScore - pointsThrown != 1) {
+            if (currentScore > pointsThrown && pointsThrown >= 0 && pointsThrown < 61 && currentScore - pointsThrown != 1) {
                 int updatedScore = currentScore - pointsThrown;
                 String possOuts = listOfOuts(Integer.toString(updatedScore));
                 gameChosen2LabelP2.setText(Integer.toString(updatedScore));
