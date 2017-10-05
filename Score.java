@@ -258,6 +258,11 @@ public class Score extends javax.swing.JFrame {
             if (choice == JOptionPane.YES_OPTION) {
                 playerOneWins.setText("0");
                 playerTwoWins.setText("0");
+                gameChosenLabel.setText("Game Chosen: " + gameOptionsComboBox.getSelectedItem());
+                gameChosen2Label.setText((String) gameOptionsComboBox.getSelectedItem());
+                gameChosen2LabelP2.setText((String) gameOptionsComboBox.getSelectedItem());
+                showPlayerOne();
+                hidePlayerTwo();
             }
         } else {
             gameChosenLabel.setText("Game Chosen: " + gameOptionsComboBox.getSelectedItem());
@@ -283,7 +288,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTf.getText())) {
             int currentScore = Integer.parseInt(gameChosen2Label.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTf.getText());
-            if (currentScore > pointsThrown) {
+            if (currentScore > pointsThrown && pointsThrown >= 0) {
                 int updatedScore = currentScore - pointsThrown;
                 gameChosen2Label.setText(Integer.toString(updatedScore));
                 scoreEntryTf.setText("");
@@ -313,7 +318,7 @@ public class Score extends javax.swing.JFrame {
         if (checkIfNumber(scoreEntryTfP2.getText())) {
             int currentScore = Integer.parseInt(gameChosen2LabelP2.getText());
             int pointsThrown = Integer.parseInt(scoreEntryTfP2.getText());
-            if (currentScore > pointsThrown) {
+            if (currentScore > pointsThrown && pointsThrown >= 0) {
                 int updatedScore = currentScore - pointsThrown;
                 gameChosen2LabelP2.setText(Integer.toString(updatedScore));
                 scoreEntryTfP2.setText("");
@@ -343,7 +348,7 @@ public class Score extends javax.swing.JFrame {
         try {
             Integer.parseInt(s);
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "You did not enter a number!");
+            JOptionPane.showMessageDialog(null, "You did not enter a valid number!");
             return false;
         }
         return true;
