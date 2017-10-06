@@ -571,17 +571,21 @@ public class Score extends javax.swing.JFrame {
     public void createSaveFile() throws IOException {
         //note this saves to the directory I'm working on :)
         String saveOutput;
-        try {
-            File file = new File(".\\src\\darts\\scores.txt");
-            file.createNewFile();
-            final Path path = Paths.get(file.getPath());
-            saveOutput = player1Label.getText() + " " + playerOneWins.getText() + "  --  " + player2Label.getText() + " " + playerTwoWins.getText();
-            Files.write(path, Arrays.asList(saveOutput), StandardCharsets.UTF_8,
-                    Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
-        } catch (FileNotFoundException f) {
-            JOptionPane.showMessageDialog(null, "Unable to save scores");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Unable to save scores");
+        if (!(playerOneWins.getText().equals("0") && playerTwoWins.getText().equals("0"))) {
+            try {
+                File file = new File(".\\src\\darts\\scores.txt");
+                file.createNewFile();
+                final Path path = Paths.get(file.getPath());
+                saveOutput = player1Label.getText().replaceFirst(":$", "") + " "
+                        + playerOneWins.getText() + " - " + playerTwoWins.getText()
+                        + " " + player2Label.getText().replaceFirst(":$", "");
+                Files.write(path, Arrays.asList(saveOutput), StandardCharsets.UTF_8,
+                        Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+            } catch (FileNotFoundException f) {
+                JOptionPane.showMessageDialog(null, "Unable to save scores");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Unable to save scores");
+            }
         }
     }
 
