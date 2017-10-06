@@ -240,7 +240,7 @@ public class possOuts {
             case 51:
                 return "19, D16";
             case 50:
-                return "10, D20";
+                return "Bull";
             case 49:
                 return "17, D16";
             case 48:
