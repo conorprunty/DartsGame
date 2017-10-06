@@ -6,6 +6,7 @@
 package darts;
 
 import static darts.possOuts.listOfOuts;
+import java.awt.Frame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -26,6 +27,8 @@ public class Score extends javax.swing.JFrame {
         enterButton.setVisible(false);
         scoreEntryTf.setVisible(false);
         mainGamePlayPanel.setVisible(false);
+        //this sets the focus on the initial 'Go' button
+        gameChoiceButton.requestFocusInWindow();
     }
 
     /**
@@ -372,7 +375,7 @@ public class Score extends javax.swing.JFrame {
                 outAmountP1.setText(possOuts);
                 count++;
                 canSwitch = true;
-            } else if (currentScore == pointsThrown) {
+            } else if (currentScore == pointsThrown && possibleThrows(pointsThrown)) {
                 JOptionPane.showMessageDialog(null, player1Label.getText() + " wins!");
                 playerOneWins.setText(Integer.toString(addOneToWins(playerOneWins.getText())));
                 scoreEntryTf.setText("");
@@ -407,7 +410,7 @@ public class Score extends javax.swing.JFrame {
                 outAmountP2.setText(possOuts);
                 count++;
                 canSwitch = true;
-            } else if (currentScore == pointsThrown) {
+            } else if (currentScore == pointsThrown && possibleThrows(pointsThrown)) {
                 JOptionPane.showMessageDialog(null, player2Label.getText() + " wins!");
                 playerTwoWins.setText(Integer.toString(addOneToWins(playerTwoWins.getText())));
                 scoreEntryTfP2.setText("");
