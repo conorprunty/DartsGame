@@ -74,7 +74,9 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                          <Component id="resultsButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                       <Component id="mainGamePlayPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -90,8 +92,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="gameOptionsComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="chooseGameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="resultsButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="playerOneName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="playerOneNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -462,6 +465,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="resultsButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Results"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resultsButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

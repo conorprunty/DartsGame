@@ -8,11 +8,13 @@ package darts;
 import static darts.possOuts.listOfOuts;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -20,6 +22,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -88,6 +92,7 @@ public class Score extends javax.swing.JFrame {
         playerOneNameTf = new javax.swing.JTextField();
         playerTwoNameTf = new javax.swing.JTextField();
         exitButton = new javax.swing.JButton();
+        resultsButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -299,6 +304,13 @@ public class Score extends javax.swing.JFrame {
             }
         });
 
+        resultsButton.setText("Results");
+        resultsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,7 +339,9 @@ public class Score extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(playerOneNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGap(358, 358, 358))
+                            .addGap(227, 227, 227)
+                            .addComponent(resultsButton)
+                            .addGap(56, 56, 56))
                         .addComponent(mainGamePlayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 26, Short.MAX_VALUE))
         );
@@ -337,8 +351,9 @@ public class Score extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gameOptionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooseGameLabel))
-                .addGap(22, 22, 22)
+                    .addComponent(chooseGameLabel)
+                    .addComponent(resultsButton))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(playerOneName)
                     .addComponent(playerOneNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -465,6 +480,30 @@ public class Score extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void resultsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultsButtonActionPerformed
+        File f = new File(getUserPath() + "\\scores.txt");
+        if (f.exists() && !f.isDirectory()) {
+            try {
+                FileInputStream in = new FileInputStream(f);
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                //this just records a list of the last 5 items for printing purposes
+                List<String> lines = new LinkedList<>();
+                for (String tmp; (tmp = br.readLine()) != null;) {
+                    if (lines.add(tmp) && lines.size() > 5) {
+                        lines.remove(0);
+                    }
+                }
+                JOptionPane.showMessageDialog(null, getResultsList((LinkedList<?>) lines), "Last 5 Results", JOptionPane.INFORMATION_MESSAGE);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Score.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Score.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "There are no past results");
+        }
+    }//GEN-LAST:event_resultsButtonActionPerformed
 
     public void playerOneTurn() {
         if (checkIfNumber(scoreEntryTf.getText())) {
@@ -606,6 +645,14 @@ public class Score extends javax.swing.JFrame {
         return null;
     }
 
+    public String getResultsList(LinkedList<?> list) {
+        String result = "";
+        for (Object s : list) {
+            result = result.concat(s + "\n");
+        }
+        return result;
+    }
+
     public void startAgain() {
         mainGamePlayPanel.setVisible(false);
     }
@@ -666,6 +713,7 @@ public class Score extends javax.swing.JFrame {
         buttonDesign(enterButton);
         buttonDesign(enterButtonP2);
         buttonDesign(exitButton);
+        buttonDesign(resultsButton);
     }
 
     public final void buttonDesign(JButton b) {
@@ -739,6 +787,7 @@ public class Score extends javax.swing.JFrame {
     private javax.swing.JTextField playerTwoNameTf;
     private javax.swing.JLabel playerTwoWins;
     private javax.swing.JLabel playerTwoWinsLabel;
+    private javax.swing.JButton resultsButton;
     private javax.swing.JTextField scoreEntryTf;
     private javax.swing.JTextField scoreEntryTfP2;
     // End of variables declaration//GEN-END:variables
