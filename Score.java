@@ -6,9 +6,11 @@
 package darts;
 
 import static darts.possOuts.listOfOuts;
-import java.awt.Frame;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -29,6 +31,7 @@ public class Score extends javax.swing.JFrame {
         mainGamePlayPanel.setVisible(false);
         //this sets the focus on the initial 'Go' button
         gameChoiceButton.requestFocusInWindow();
+        setJPanelDesign();
     }
 
     /**
@@ -80,8 +83,11 @@ public class Score extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Let's play Darts!");
+        setBackground(new java.awt.Color(255, 241, 178));
         setResizable(false);
 
+        gameOptionsComboBox.setBackground(new java.awt.Color(204, 255, 255));
+        gameOptionsComboBox.setFont(new java.awt.Font("Segoe UI Mono", 0, 11)); // NOI18N
         gameOptionsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "301", "501" }));
         gameOptionsComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +95,7 @@ public class Score extends javax.swing.JFrame {
             }
         });
 
+        chooseGameLabel.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         chooseGameLabel.setText("Choose Game:");
 
         gameChoiceButton.setText("Go!");
@@ -98,12 +105,18 @@ public class Score extends javax.swing.JFrame {
             }
         });
 
+        mainGamePlayPanel.setBorder(new javax.swing.border.MatteBorder(null));
+
+        gameChosenLabel.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 14)); // NOI18N
         gameChosenLabel.setText("dummyText");
 
+        currentScoreLabel.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         currentScoreLabel.setText("dummyText");
 
+        gameChosen2Label.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         gameChosen2Label.setText("dummyText");
 
+        enterScoreLabel.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         enterScoreLabel.setText("dummyText");
 
         enterButton.setText("Enter");
@@ -113,14 +126,19 @@ public class Score extends javax.swing.JFrame {
             }
         });
 
+        player1Label.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         player1Label.setText("Player 1:");
 
+        player2Label.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         player2Label.setText("Player 2:");
 
+        currentScoreLabelP2.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         currentScoreLabelP2.setText("dummyText");
 
+        gameChosen2LabelP2.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         gameChosen2LabelP2.setText("dummyText");
 
+        enterScoreLabelP2.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         enterScoreLabelP2.setText("dummyText");
 
         enterButtonP2.setText("Enter");
@@ -130,20 +148,28 @@ public class Score extends javax.swing.JFrame {
             }
         });
 
+        playerOneWinsLabel.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         playerOneWinsLabel.setText("Wins:");
 
+        playerOneWins.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         playerOneWins.setText("0");
 
+        playerTwoWinsLabel.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         playerTwoWinsLabel.setText("Wins:");
 
+        playerTwoWins.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         playerTwoWins.setText("0");
 
+        outsP1.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         outsP1.setText("Best out:");
 
+        outsP2.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         outsP2.setText("Best out:");
 
+        outAmountP1.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         outAmountP1.setText("None");
 
+        outAmountP2.setFont(new java.awt.Font("Segoe UI Mono", 1, 12)); // NOI18N
         outAmountP2.setText("None");
 
         javax.swing.GroupLayout mainGamePlayPanelLayout = new javax.swing.GroupLayout(mainGamePlayPanel);
@@ -152,62 +178,56 @@ public class Score extends javax.swing.JFrame {
             mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
                 .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gameChosenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(currentScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(player1Label))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                                .addComponent(playerOneWinsLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(playerOneWins))
-                                            .addComponent(gameChosen2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(outsP1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(currentScoreLabelP2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(player2Label)
-                                    .addComponent(enterScoreLabelP2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(outsP2)))))
-                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                        .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(enterScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(scoreEntryTf, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(outAmountP1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(enterButton))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainGamePlayPanelLayout.createSequentialGroup()
-                        .addComponent(enterButtonP2)
-                        .addGap(87, 87, 87))
-                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
                         .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gameChosen2LabelP2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
-                                .addComponent(playerTwoWinsLabel)
+                                .addGap(24, 24, 24)
+                                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(player1Label)
+                                    .addComponent(enterScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                                    .addComponent(currentScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(outsP1)))
+                        .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(playerTwoWins))
-                            .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(outAmountP2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(scoreEntryTfP2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)))
-                        .addGap(52, 52, 52))))
+                                .addComponent(gameChosen2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(playerOneWinsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(playerOneWins))
+                            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(enterButton)
+                                    .addComponent(scoreEntryTf, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(outAmountP1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(player2Label)
+                            .addComponent(enterScoreLabelP2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(currentScoreLabelP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(outsP2)
+                        .addGap(42, 42, 42)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outAmountP2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
+                        .addComponent(playerTwoWinsLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(playerTwoWins))
+                    .addComponent(gameChosen2LabelP2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scoreEntryTfP2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enterButtonP2))
+                .addGap(29, 29, 29))
+            .addGroup(mainGamePlayPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(gameChosenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainGamePlayPanelLayout.setVerticalGroup(
             mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,11 +259,10 @@ public class Score extends javax.swing.JFrame {
                     .addComponent(enterButton)
                     .addComponent(enterButtonP2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(outsP1)
-                        .addComponent(outsP2)
-                        .addComponent(outAmountP1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(mainGamePlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(outsP1)
+                    .addComponent(outsP2)
+                    .addComponent(outAmountP1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outAmountP2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55))
         );
@@ -253,18 +272,18 @@ public class Score extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mainGamePlayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chooseGameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gameChoiceButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chooseGameLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(gameOptionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(mainGamePlayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                            .addComponent(gameOptionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,11 +292,11 @@ public class Score extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gameOptionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chooseGameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(gameChoiceButton)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(mainGamePlayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -376,7 +395,9 @@ public class Score extends javax.swing.JFrame {
                 count++;
                 canSwitch = true;
             } else if (currentScore == pointsThrown && possibleThrows(pointsThrown)) {
-                JOptionPane.showMessageDialog(null, player1Label.getText() + " wins!");
+                //replaceFirst just removed the colon for the winning message as text
+                //taken from other jLabel
+                JOptionPane.showMessageDialog(null, player1Label.getText().replaceFirst(":$", "") + " wins!");
                 playerOneWins.setText(Integer.toString(addOneToWins(playerOneWins.getText())));
                 scoreEntryTf.setText("");
                 gameChosen2Label.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
@@ -411,7 +432,9 @@ public class Score extends javax.swing.JFrame {
                 count++;
                 canSwitch = true;
             } else if (currentScore == pointsThrown && possibleThrows(pointsThrown)) {
-                JOptionPane.showMessageDialog(null, player2Label.getText() + " wins!");
+                //replaceFirst just removed the colon for the winning message as text
+                //taken from other jLabel
+                JOptionPane.showMessageDialog(null, player2Label.getText().replaceFirst(":$", "") + " wins!");
                 playerTwoWins.setText(Integer.toString(addOneToWins(playerTwoWins.getText())));
                 scoreEntryTfP2.setText("");
                 showPlayerOne();
@@ -450,7 +473,7 @@ public class Score extends javax.swing.JFrame {
     }
 
     public boolean possibleThrows(int input) {
-        if(input == 25 || input == 50){
+        if (input == 25 || input == 50) {
             return true;
         }
         for (int i = 0; i <= 20; i++) {
@@ -514,6 +537,20 @@ public class Score extends javax.swing.JFrame {
     public int addOneToWins(String s) {
         int newAmount = (Integer.parseInt(s) + 1);
         return newAmount;
+    }
+
+    public final void setJPanelDesign() {
+        mainGamePlayPanel.setBackground(new Color(255, 241, 178));
+        mainGamePlayPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        buttonDesign(gameChoiceButton);
+        buttonDesign(enterButton);
+        buttonDesign(enterButtonP2);
+    }
+
+    public final void buttonDesign(JButton b) {
+        b.setBackground(new Color(59, 89, 182));
+        b.setFont(new Font("Tahoma", Font.BOLD, 12));
+        b.setForeground(Color.WHITE);
     }
 
     /**
