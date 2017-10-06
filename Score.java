@@ -11,6 +11,9 @@ import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -323,7 +326,8 @@ public class Score extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(playerOneNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(358, 358, 358))
                         .addComponent(mainGamePlayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 26, Short.MAX_VALUE))
         );
@@ -334,7 +338,7 @@ public class Score extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gameOptionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chooseGameLabel))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(playerOneName)
                     .addComponent(playerOneNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -344,7 +348,7 @@ public class Score extends javax.swing.JFrame {
                     .addComponent(playerTwoNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gameChoiceButton)
                     .addComponent(exitButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(mainGamePlayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -573,7 +577,8 @@ public class Score extends javax.swing.JFrame {
         String saveOutput;
         if (!(playerOneWins.getText().equals("0") && playerTwoWins.getText().equals("0"))) {
             try {
-                File file = new File(".\\src\\darts\\scores.txt");
+                String userPath = getUserPath();
+                File file = new File(userPath + "\\scores.txt");
                 file.createNewFile();
                 final Path path = Paths.get(file.getPath());
                 saveOutput = player1Label.getText().replaceFirst(":$", "") + " "
@@ -587,6 +592,18 @@ public class Score extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Unable to save scores");
             }
         }
+    }
+
+    public String getUserPath() {
+        try {
+            String path = Score.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            path = path.substring(0, path.lastIndexOf("/") + 1);
+            String decodedPath = URLDecoder.decode(path, "UTF-8");
+            return decodedPath;
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Score.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public void startAgain() {
