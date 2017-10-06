@@ -527,6 +527,11 @@ public class Score extends javax.swing.JFrame {
                 gameChosen2LabelP2.setText(gameChosenLabel.getText().replaceAll("[^0-9]", ""));
                 outAmountP1.setText("None");
                 outAmountP2.setText("None");
+                showPlayerTwo();
+                hidePlayerOne();
+                showP2Outs();
+                hideP1Outs();
+                scoreEntryTf.setText("");
                 count = 1;
             } else {
                 JOptionPane.showMessageDialog(null, "You can't possibly have scored that.");
