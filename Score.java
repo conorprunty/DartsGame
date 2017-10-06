@@ -8,6 +8,17 @@ package darts;
 import static darts.possOuts.listOfOuts;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -357,6 +368,11 @@ public class Score extends javax.swing.JFrame {
                         || nameMaxLength(playerOneNameTf.getText()) || nameMaxLength(playerTwoNameTf.getText())) {
                     JOptionPane.showMessageDialog(null, "Player names both need to be completed and under 10 characters");
                 } else {
+                    try {
+                        createSaveFile();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Score.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     playerOneWins.setText("0");
                     playerTwoWins.setText("0");
                     gameChosenLabel.setText("Game Chosen: " + gameOptionsComboBox.getSelectedItem());
@@ -436,6 +452,11 @@ public class Score extends javax.swing.JFrame {
                 "Exit",
                 JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
+            try {
+                createSaveFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Score.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.exit(0);
         }
 
@@ -545,6 +566,23 @@ public class Score extends javax.swing.JFrame {
 
     public boolean nameMaxLength(String s) {
         return s.length() > 10;
+    }
+
+    public void createSaveFile() throws IOException {
+        //note this saves to the directory I'm working on :)
+        String saveOutput;
+        try {
+            File file = new File(".\\src\\darts\\scores.txt");
+            file.createNewFile();
+            final Path path = Paths.get(file.getPath());
+            saveOutput = player1Label.getText() + " " + playerOneWins.getText() + "  --  " + player2Label.getText() + " " + playerTwoWins.getText();
+            Files.write(path, Arrays.asList(saveOutput), StandardCharsets.UTF_8,
+                    Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+        } catch (FileNotFoundException f) {
+            JOptionPane.showMessageDialog(null, "Unable to save scores");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Unable to save scores");
+        }
     }
 
     public void startAgain() {
