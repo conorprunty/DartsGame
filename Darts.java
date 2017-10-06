@@ -35,6 +35,7 @@ public class Darts {
         s.getContentPane().setBackground(new Color(255,255,204));
         s.setVisible(true);
         s.setLocationRelativeTo(null);
+        s.setDefaultCloseOperation(0);
     }
 
 }
